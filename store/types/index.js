@@ -1,0 +1,19 @@
+export const LOAD_READERS = "LOAD_READERS";
+
+export const LOAD_HADITH = "LOAD_HADITH";
+
+export const ADD_SURAH_FAV = "ADD_SURAH_FAV";
+
+export const REMOVE_SURAH_FAV = "REMOVE_SURAH_FAV";
+
+export const ADD_READER_FAV = "ADD_READER_FAV";
+
+export const REMOVE_READER_FAV = "REMOVE_READER_FAV";
+
+export const ADD_FOLLOWER = "ADD_FOLLOWER";
+
+export const REMOVE_FOLLOWER = "REMOVE_FOLLOWER";
+
+export const HANDLE_MEDIA = "HANDLE_MEDIA";
+
+export const CHANGE_MEDIA = "CHANGE_MEDIA";

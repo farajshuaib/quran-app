@@ -4,8 +4,8 @@ import TrackPlayer, {
   usePlaybackState,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
-import {ChangeMedia} from '../store/actions';
-import {useSelector, useDispatch} from 'react-redux';
+import { ChangeMedia } from '../store/actions';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Image,
   StyleSheet,
@@ -15,18 +15,18 @@ import {
   ViewPropTypes,
 } from 'react-native';
 
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 import Play from '../assets/svg/play';
 import Pause from '../assets/svg/Pause';
 
 function ProgressBar() {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const progress = useTrackPlayerProgress();
 
   return (
     <View style={styles.progress}>
       <View
-        style={{flex: progress.position, backgroundColor: colors.primary}}
+        style={{ flex: progress.position, backgroundColor: colors.primary }}
       />
       <View
         style={{
@@ -41,13 +41,13 @@ function ProgressBar() {
 async function skipToNext() {
   try {
     await TrackPlayer.skipToNext();
-  } catch (_) {}
+  } catch (_) { }
 }
 
 async function skipToPrevious() {
   try {
     await TrackPlayer.skipToPrevious();
-  } catch (_) {}
+  } catch (_) { }
 }
 
 const Player = () => {
@@ -55,7 +55,7 @@ const Player = () => {
   const playbackState = usePlaybackState();
   const mediaPlaying = useSelector(state => state.mediaPlaying);
   const media = useSelector(state => state.media);
-  const {colors} = useTheme();
+  const { colors } = useTheme();
 
   React.useEffect(async () => {
     setup();
@@ -85,7 +85,7 @@ const Player = () => {
       ],
     });
   };
-  const start = async ({id, title, url, artist}) => {
+  const start = async ({ id, title, url, artist }) => {
     // Add a track to the queue
     await TrackPlayer.reset();
     await TrackPlayer.add({
@@ -133,7 +133,7 @@ const Player = () => {
       : dispatch(ChangeMedia(mediaPlaying + 1));
   };
 
-  
+
 
   const onPrevious = () => {
     if (mediaPlaying == 0) {
@@ -163,13 +163,14 @@ const Player = () => {
 
   return (
     <>
-      <View style={{...styles.card, backgroundColor: colors.secondry}}>
+      <View style={{ ...styles.card, backgroundColor: colors.secondry }}>
         <View style={styles.controls}>
           <TouchableOpacity
             style={styles.controlButtonContainer}
-            onPress={onPrevious}>
-            <Text style={{...styles.controlButtonText}}> {'<<'} </Text>
+            onPress={onNext}>
+            <Text style={{ ...styles.controlButtonText }}>{'>>'}</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={{
               ...styles.controlButtonContainer,
@@ -183,12 +184,13 @@ const Player = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.controlButtonContainer}
-            onPress={onNext}>
-            <Text style={{...styles.controlButtonText}}>{'>>'}</Text>
+            onPress={onPrevious}>
+            <Text style={{ ...styles.controlButtonText }}> {'<<'} </Text>
           </TouchableOpacity>
+
         </View>
         {media[+mediaPlaying] && (
-          <View style={{flexDirection: 'row-reverse',marginHorizontal: 10, justifyContent: 'center', alignItems:'center'}}>
+          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'center', alignItems: 'center' }}>
             <Text style={styles.title}>{media[+mediaPlaying].id}</Text>
             <Text style={styles.title}>:</Text>
             <Text style={styles.title}>{media[+mediaPlaying].name}</Text>
@@ -206,7 +208,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopWidth: 1,
     borderColor: '#ddd',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
     shadowColor: 'black',
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
   progress: {
     height: 3,
     width: '100%',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
   },
   title: {
     fontFamily: 'Tajawal-Medium',

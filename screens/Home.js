@@ -58,7 +58,7 @@ const Home = props => {
             showsVerticalScrollIndicator={false}
             onRefresh={() => onRefresh()}
             refreshing={isFetching}
-            renderItem={({item}) => <ReaderItem {...props} item={item} />}
+            renderItem={({item}, index) => <ReaderItem key={index} {...props} item={item} />}
           />
         ) : (
           <Text

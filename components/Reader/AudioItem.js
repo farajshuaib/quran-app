@@ -31,7 +31,7 @@ const AudioItem = ({surahData, index, uid, name, rewaya}) => {
   return (
     <View
       style={{
-        flexDirection: 'row-reverse',
+        flexDirection: 'row',
         padding: 10,
         alignItems: 'center',
         backgroundColor: '#fff',

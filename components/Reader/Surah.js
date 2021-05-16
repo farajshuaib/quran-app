@@ -47,7 +47,7 @@ const Surah = ({surah}) => {
       {/* start title  */}
       <View
         style={{
-          flexDirection: 'row-reverse',
+          flexDirection: 'row',
           marginVertical: 10,
           paddingHorizontal: 10,
           alignItems: 'center',

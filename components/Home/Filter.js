@@ -46,10 +46,11 @@ export default ({search, handleSerachChange, selected, handleSelected}) => {
         <Picker
           selectedValue={selected}
           mode="dropdown"
-          style={{color: '#999', marginTop: -8, marginRight: -35}}
+          style={{color: '#999', marginTop: -8, marginRight: 0}}
           onValueChange={(itemValue, itemIndex) => handleSelected(itemValue)}>
-          {options.map(item => (
+          {options.map((item, index) => (
             <Picker.Item
+              key={index}
               fontFamily="Tajawal-Regular"
               color='#333'
               label={item.label}
@@ -58,7 +59,7 @@ export default ({search, handleSerachChange, selected, handleSelected}) => {
           ))}
         </Picker>
       </View>
-      <View style={{flexDirection: 'row-reverse', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <TextInput
           style={styles.input}
           onChangeText={handleSerachChange}
@@ -67,7 +68,7 @@ export default ({search, handleSerachChange, selected, handleSelected}) => {
           keyboardType="default"
           placeholderTextColor="#999"
         />
-        <View  style={{marginRight: -33}}>
+        <View  style={{marginLeft: -33}}>
           <SearchIcon />
         </View>
       </View>
